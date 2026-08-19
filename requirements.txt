@@ -1,1 +1,1 @@
-cryptography>=42,<47
+cryptography>=50,<51
