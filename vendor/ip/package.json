@@ -1,0 +1,8 @@
+{
+  "name": "ip",
+  "version": "3.0.0-local",
+  "private": true,
+  "description": "Minimal IP-to-buffer compatibility shim for sticky-session-custom",
+  "main": "index.js",
+  "license": "MIT"
+}

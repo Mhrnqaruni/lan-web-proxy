@@ -1,0 +1,45 @@
+{
+  "name": "lan-web-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Authenticated real-page browser proxy for a LAN or HTTPS VPS",
+  "main": "proxy_engine.js",
+  "scripts": {
+    "check": "node --check proxy_engine.js && node --check prepare_engine.js && node tests/test_ip_shim.js",
+    "prepare-engine": "node prepare_engine.js"
+  },
+  "keywords": [
+    "web-proxy",
+    "browser-proxy",
+    "python",
+    "rammerhead",
+    "self-hosted",
+    "lan",
+    "vps"
+  ],
+  "author": "Mhrnqaruni",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mhrnqaruni/lan-web-proxy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mhrnqaruni/lan-web-proxy/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv-flow": "3.3.0",
+    "ip": "file:vendor/ip",
+    "rammerhead": "1.2.64",
+    "testcafe-hammerhead": "31.7.8"
+  },
+  "overrides": {
+    "ip": "$ip",
+    "rammerhead": {
+      "testcafe-hammerhead": "31.7.8",
+      "uuid": "11.1.1"
+    }
+  }
+}

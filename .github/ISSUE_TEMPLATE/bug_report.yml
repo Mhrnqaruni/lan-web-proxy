@@ -1,0 +1,69 @@
+name: Bug report
+description: Report a reproducible application problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include access tokens, cookies, passwords, private keys, or unreviewed logs.
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Deployment mode
+      options:
+        - LAN
+        - VPS with Caddy
+        - VPS with Nginx
+        - Other reverse proxy
+    validations:
+      required: true
+
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      placeholder: Commit SHA or release version
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Host and browser environment
+      placeholder: Ubuntu 24.04 host; Chromium 130 client
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: Describe the smallest repeatable sequence.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include exact browser errors and sanitized diagnostics when useful.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed tokens, cookies, credentials, private keys, and sensitive browsing data.
+          required: true
+        - label: This is not a private security vulnerability.
+          required: true

@@ -1,0 +1,32 @@
+[Unit]
+Description=Authenticated LAN Web Proxy backend
+Documentation=https://github.com/Mhrnqaruni/lan-web-proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lanproxy
+Group=lanproxy
+WorkingDirectory=/opt/lan-web-proxy
+EnvironmentFile=/etc/lan-web-proxy.env
+UMask=0077
+ExecStart=/opt/lan-web-proxy/.venv/bin/python /opt/lan-web-proxy/proxy_server.py --vps --public-hostname proxy.example.com
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=15s
+
+# Basic service hardening. The application still needs outbound Internet access.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/lan-web-proxy/.proxy_data
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
